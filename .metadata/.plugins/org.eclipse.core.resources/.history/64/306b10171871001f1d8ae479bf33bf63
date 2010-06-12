@@ -1,0 +1,13 @@
+package Exercicios_131_132;
+
+public class FrameMain {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

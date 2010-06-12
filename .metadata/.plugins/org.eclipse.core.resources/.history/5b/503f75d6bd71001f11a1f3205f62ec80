@@ -1,0 +1,34 @@
+package Calculadora;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+class Numero implements ActionListener{
+	
+	int valor;
+	Calculadora calc;
+	
+	Numero(int valor, Calculadora calc){
+		this.valor = valor;
+		this.calc = calc;
+	}
+	
+	public void actionPerformed(ActionEvent e){
+		if (this.primeiraOperacao()){
+			visor.setText(Integer.toString(this.valor));
+		} else {
+			visor.setText(this.calc.getNumeroNoVisor() + Integer.toString(this.valor));
+		}
+	}
+	
+	private boolean primeiraOperacao(){
+		if (this.calc.getNumeroNoVisor() == ZERO){
+			return true;
+		}
+		if (operador == OPERADOR_INVALIDO && numero1 == ZERO){
+			return true;
+		}
+		return false;
+	}
+	
+}

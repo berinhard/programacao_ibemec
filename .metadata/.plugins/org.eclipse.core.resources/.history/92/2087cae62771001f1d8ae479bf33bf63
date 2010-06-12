@@ -1,0 +1,40 @@
+package Exercicio_1313;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int w = screenSize.width;
+		int h = screenSize.height;
+		JFrame frame = new MainFrame(w, h, 0, 0);
+		frame.show();
+	}
+
+}
+
+class MainFrame extends JFrame{
+	MainFrame(int width, int height, int x, int y){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Exercicio 13.13");
+		setSize(width, height);
+		setLocation(x, y);
+		getContentPane().add(new ButtonPanel());
+	}
+}
+
+class ButtonPanel extends JPanel{
+	Border blackLine = BorderFactory.createLineBorder(Color.black);
+	
+	ButtonPanel(){
+		JButton redButton = new JButton("Red");
+		JButton blueButton = new JButton("Blue");
+		JButton greenButton = new JButton("Green");
+		add(redButton, BorderLayout.WEST);
+		add(greenButton, BorderLayout.CENTER);
+		add(blueButton, BorderLayout.EAST);
+	}
+}

@@ -1,0 +1,78 @@
+package Exercicio_1313;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int w = screenSize.width;
+		int h = screenSize.height;
+		JFrame frame = new MainFrame(w, h, 0, 0);
+		frame.show();
+	}
+
+}
+
+class MainFrame extends JFrame{
+	MainFrame(int width, int height, int x, int y){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Exercicio 13.13");
+		setSize(width, height);
+		setLocation(x, y);
+		getContentPane().add(new ButtonPanel());
+	}
+}
+
+class ButtonPanel extends JPanel{
+	
+	ButtonPanel(){
+		JButton redButton = new JButton("Red");
+		JButton blueButton = new JButton("Blue");
+		JButton greenButton = new JButton("Green");
+		JButton greenButton = new JButton("Green");
+		JButton greenButton = new JButton("Green");
+		JButton greenButton = new JButton("Green");
+		JButton greenButton = new JButton("Green");
+		JButton greenButton = new JButton("Green");
+		JButton greenButton = new JButton("Green");
+		JButton greenButton = new JButton("Green");
+		JButton greenButton = new JButton("Green");
+		JButton cyanButton = new JButton("Cyan");
+		JButton blackButton = new JButton("Black");
+		add(redButton, BorderLayout.WEST);
+		add(greenButton, BorderLayout.CENTER);
+		add(blueButton, BorderLayout.EAST);
+		add(blackButton);
+		redButton.addActionListener(new ColorAction(Color.red));
+		greenButton.addActionListener(new ColorAction(Color.green));
+		blueButton.addActionListener(new ColorAction(Color.blue));
+		blackButton.addActionListener(new ColorAction(Color.black));
+		cyanButton.addActionListener(new ColorAction(Color.cyan));
+		blueButton.addActionListener(new ColorAction(Color.blue));
+		blueButton.addActionListener(new ColorAction(Color.blue));
+		blueButton.addActionListener(new ColorAction(Color.blue));
+		blueButton.addActionListener(new ColorAction(Color.blue));
+		blueButton.addActionListener(new ColorAction(Color.blue));
+		blueButton.addActionListener(new ColorAction(Color.blue));
+		blueButton.addActionListener(new ColorAction(Color.blue));
+		blueButton.addActionListener(new ColorAction(Color.blue));
+	}
+
+	class ColorAction implements ActionListener{
+		
+		private Color color;
+		
+		ColorAction(Color color){
+			this.color = color;
+		}
+		
+		public void actionPerformed(ActionEvent event){
+			setBackground(color);
+		}
+	}
+	
+}
+

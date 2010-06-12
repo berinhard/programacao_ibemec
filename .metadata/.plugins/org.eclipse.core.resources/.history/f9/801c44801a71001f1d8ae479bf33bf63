@@ -1,0 +1,27 @@
+package Exercicios_133_134_135_136_137;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int w = screenSize.width;
+		int h = screenSize.height;
+		JFrame frame = new MainFrame(w/2, h/2, w/2 , h/2);
+		frame.show();
+	}
+
+}
+
+class MainFrame extends JFrame{
+	
+	MainFrame(int width, int height, int x, int y){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Main Frame");
+		setSize(width, height);
+		setLocation(x, y);
+	}
+	
+}

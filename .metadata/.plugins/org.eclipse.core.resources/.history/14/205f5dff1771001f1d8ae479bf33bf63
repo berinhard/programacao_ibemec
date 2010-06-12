@@ -1,0 +1,17 @@
+import FrameMain;
+
+import javax.swing.JFrame;
+
+public class FrameMain extends JFrame{
+
+	public static void main(String[] args) {
+		new FrameMain();
+	}
+	
+	FrameMain(){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(400, 500);
+		this.show();
+	}
+
+}

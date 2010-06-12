@@ -1,0 +1,62 @@
+package Exercicios_1314_1315;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		JFrame frame = new MainFrame(300, 100, 400, 0);
+		frame.show();
+	}
+
+}
+
+class MainFrame extends JFrame{
+	MainFrame(int width, int height, int x, int y){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Exercicio 13.13");
+		setSize(width, height);
+		setLocation(x, y);
+		getContentPane().add(new TemperaturePanel());
+	}
+}
+
+class TemperaturePanel extends JPanel implements ActionListener{
+	
+	JLabel directions;
+	JTextField fahrenheit_field;
+	JLabel celsius;	
+	
+	TemperaturePanel(){
+		directions = new JLabel("Enter Fahrenheit temperature:");
+		fahrenheit_field = new JTextField(3);
+		fahrenheit_field.addActionListener(new FahrenheitHandler());
+		celsius = new JLabel();
+		celsius.setFont(new Font(null, 0, 28));
+		add(directions);
+		add(fahrenheit_field);
+		add(celsius);
+	}
+	
+	public void printTemp(int c, double f){
+		celsius.setText(f + "\u00B0F = " + c + "\u00B0C");
+	}
+
+	class FahrenheitHandler implements ActionListener{
+		
+		double f;
+		
+		FahrenheitHandler(){
+			this.f = Double.parseDouble(fahrenheit_field.getText());
+		}
+		
+		public void actionPerformed(ActionEvent event){
+			int c = (int)Math.round(5 * (f - 32) / 9);
+			fahrenheit_field.setText("");
+			printTemp(c, f);
+		}
+	}
+	
+}

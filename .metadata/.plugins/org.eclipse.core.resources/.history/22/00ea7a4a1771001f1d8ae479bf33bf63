@@ -1,0 +1,16 @@
+import javax.swing.*;
+
+
+public class Main extends JFrame{
+
+	public static void main(String[] args) {
+		JFrame frame = new MainFrame();
+		frame.show();
+	}
+	
+	Main(){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(400, 500);
+	}
+
+}

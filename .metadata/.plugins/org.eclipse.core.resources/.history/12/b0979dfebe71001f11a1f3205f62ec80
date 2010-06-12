@@ -1,0 +1,60 @@
+package Calculadora;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+class OperacaoCalculadora implements ActionListener {
+
+	char operacao;
+	Calculadora calc;
+
+	OperacaoCalculadora(char operacao, Calculadora calc){
+		this.operacao = operacao;
+		this.calc = calc;
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		switch (this.operacao) {
+		case '+':
+		case '-':
+		case '/':
+		case '*':
+			this.handlerOperacao(this.operacao);
+			break;
+		case '=':
+			this.handlerResultado();
+		}
+	}
+
+	private void handlerOperacao(char op) {
+		int num = Integer.parseInt(visor.getText());
+		System.out.println(num);
+		if (num != 0) {
+			operador = op;
+			numero1 = num;
+			visor.setText("0");
+		}
+	}
+
+	private void handlerResultado() {
+		int num = Integer.parseInt(visor.getText());
+		double resultado = 0;
+		switch (operador) {
+		case '+':
+			resultado = numero1 + num;
+			break;
+		case '-':
+			resultado = numero1 - num;
+			break;
+		case '/':
+			resultado = (double) numero1 / num;
+			break;
+		case '*':
+			resultado = numero1 * num;
+			break;
+		}
+		visor.setText(Double.toString(resultado));
+		numero1 = ZERO;
+		operador = OPERADOR_INVALIDO;
+	}
+}

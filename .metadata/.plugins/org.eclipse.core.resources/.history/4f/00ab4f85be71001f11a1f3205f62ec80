@@ -1,0 +1,25 @@
+package Calculadora;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+class Numero implements ActionListener{
+	
+	int valor;
+	Calculadora calc;
+	
+	Numero(int valor, Calculadora calc){
+		this.valor = valor;
+		this.calc = calc;
+	}
+	
+	public void actionPerformed(ActionEvent e){
+		if (this.calc.primeiraOperacao()){
+			visor.setText(Integer.toString(this.valor));
+		} else {
+			visor.setText(this.calc.getNumeroNoVisor() + Integer.toString(this.valor));
+		}
+	}
+	
+	
+}

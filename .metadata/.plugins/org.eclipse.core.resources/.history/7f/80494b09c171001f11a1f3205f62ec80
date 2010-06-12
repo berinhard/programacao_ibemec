@@ -1,0 +1,63 @@
+package Calculadora;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+class OperacaoCalculadora implements ActionListener {
+
+	char operacao;
+	Calculadora calc;
+
+	OperacaoCalculadora(char operacao, Calculadora calc){
+		this.operacao = operacao;
+		this.calc = calc;
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		switch (this.operacao) {
+		case '+':
+		case '-':
+		case '/':
+		case '*':
+			this.handlerOperacao(this.operacao);
+			break;
+		case '=':
+			this.handlerResultado();
+		}
+	}
+
+	private void handlerOperacao(char op) {
+		if (this.calc.primeiraOperacao()) {
+			return;
+		}
+		int num = this.calc.getNumeroNoVisor();
+		this.calc.setOperador(op);
+		this.calc.setPrimeiroNumero(num);
+		this.calc.setNumeroNoVisor(Calculadora.ZERO);
+	}
+
+	private void handlerResultado() {
+		if (this.calc.naoTemOperacaDefinida) {
+			return;
+		}
+		int num = this.calc.getNumeroNoVisor();
+		int numeroCalculadora = this.calc.getPrimeiroNumero();
+		double resultado = 0;
+		switch (this.calc.getOperador()) {
+		case '+':
+			resultado = numeroCalculadora + num;
+			break;
+		case '-':
+			resultado = numeroCalculadora - num;
+			break;
+		case '/':
+			resultado = (double) numeroCalculadora / num;
+			break;
+		case '*':
+			resultado = numeroCalculadora * num;
+			break;
+		}
+		this.calc.setNumeroNoVisor(resultado);
+		this.calc.zeraCalculadora();
+	}
+}
